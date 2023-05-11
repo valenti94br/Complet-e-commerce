@@ -1,7 +1,7 @@
 // Importamos las librerías necesarias
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
-import NavBar from '../NavBar/NavBar';
+import { useNavigate } from 'react-router-dom'; // Importamos useNavigate
 
 // Definimos el componente Login
 function Login() {
@@ -11,6 +11,9 @@ function Login() {
   // Creamos estados locales para el email y la contraseña con los hooks useState
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // Creamos una instancia de navigate
+  const navigate = useNavigate();
 
   // Esta función se activa cada vez que el valor del campo de email cambia
   const handleEmailChange = (event) => {
@@ -30,6 +33,7 @@ function Login() {
       // Llama a la función login del UserContext pasando el email y la contraseña
       await login({ email, password });
       // Aquí manejaríamos el inicio de sesión exitoso
+      navigate('/profile'); // Navegamos a la página de perfil después del inicio de sesión exitoso
     } catch (error) {
       console.error(error);
       // Aquí manejaríamos los errores en el inicio de sesión

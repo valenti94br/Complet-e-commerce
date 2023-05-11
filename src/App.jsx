@@ -4,6 +4,7 @@ import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import Product from './components/Products/Product';
+import Profile from './components/Profile/Profile';
 import NavBar from './components/NavBar/NavBar';
 import { GlobalProvider } from "./context/GlobalState";
 import { UserProvider } from "./context/UserContext/UserState";
@@ -20,6 +21,8 @@ function App() {
               <Route path="/product" element={<Product/>} />
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </Router>
         </GlobalProvider>
