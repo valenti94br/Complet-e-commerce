@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext/UserState';
+import { Avatar } from 'antd';
+import { AntDesignOutlined } from '@ant-design/icons';
 
 const NavBar = () => {
-  const { user } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
 
   return (
     <nav>
@@ -14,16 +16,37 @@ const NavBar = () => {
         <li>
           <Link to="/product">Market</Link>
         </li>
-        <li>
-          <Link to="/register">Register</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
+        {!user && (
+          <>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </>
+        )}
         {user && (
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
+          <>
+            <li>
+              <Link to="/profile">
+                <Avatar
+                  size={{
+                    xs: 24,
+                    sm: 32,
+                    md: 40,
+                    lg: 64,
+                    xl: 80,
+                    xxl: 100,
+                  }}
+                  icon={<AntDesignOutlined />}
+                />
+              </Link>
+            </li>
+            <li>
+              <span onClick={() => logout()}>Logout</span>
+            </li>
+          </>
         )}
       </ul>
     </nav>

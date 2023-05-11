@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import NavBar from '../NavBar/NavBar';
 import { UserContext } from '../../context/UserContext/UserState';
+import { AntDesignOutlined } from '@ant-design/icons';
+import { Avatar } from 'antd';
 
 const Profile = () => {
   const { user, getUserInfo } = useContext(UserContext);
