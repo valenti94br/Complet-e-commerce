@@ -1,11 +1,19 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext/UserState';
 import { Avatar } from 'antd';
 import { AntDesignOutlined } from '@ant-design/icons';
 
 const NavBar = () => {
   const { user, logout } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const logoutUser = () => {
+    logout();
+    setTimeout(() => {
+      navigate("/")
+    },2000)
+  };
 
   return (
     <nav>
@@ -44,7 +52,7 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <span onClick={() => logout()}>Logout</span>
+              <span onClick={logoutUser}>Logout</span>
             </li>
           </>
         )}
