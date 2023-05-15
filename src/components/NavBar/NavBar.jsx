@@ -1,3 +1,4 @@
+
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext/UserState';
@@ -18,11 +19,15 @@ const NavBar = () => {
 
   return (
     <nav>
+        {/* Muestra los enlaces de navegación y el avatar del usuario si está logueado */}
         <Button type="link">
           <Link to="/">Home</Link>
         </Button>
         <Button type="link">
           <Link to="/product">Market</Link>
+        </Button>
+        <Button type="link">
+          <Link to="/cart">Cart</Link>
         </Button>
         {!user && (
           <>

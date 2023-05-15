@@ -1,32 +1,40 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar';
 
+import React, { useState } from 'react';
+import axios from 'axios'; // Para hacer llamadas API
+import { useNavigate } from 'react-router-dom'; // Para la navegación entre rutas
+
+// Definimos el componente Register
 const Register = () => {
+  // Usamos useState para crear estados locales para el nombre, el email y la contraseña
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
   });
 
+  // Desestructuramos el estado del formulario para extraer el nombre, el email y la contraseña
   const { name, email, password } = formData;
 
+  // Esta función se ejecuta cada vez que se cambia el valor de uno de los campos del formulario
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  // Esta función se ejecuta cuando se envía el formulario
   const onSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Evitamos que la página se recargue
 
     try {
+      // Definimos la configuración para la llamada API
       const config = {
         headers: {
           'Content-Type': 'application/json',
         },
       };
 
+      // Creamos el cuerpo de la petición convirtiendo los datos del formulario a formato JSON
       const body = JSON.stringify({ name, email, password });
 
+      // Hacemos una petición POST para registrar el usuario
       const response = await axios.post(
         'http://localhost:8080/users/createUser',
         body,
@@ -34,14 +42,16 @@ const Register = () => {
       );
 
       console.log('Usuario registrado exitosamente', response.data);
-      navigate('/login'); // Redirigir a la página de login
+      navigate('/login'); // Redirigimos al usuario a la página de login
     } catch (err) {
       console.error('Error al registrar el usuario', err.response.data);
     }
   };
 
-  const navigate = useNavigate(); // Obtener la función navigate
+  // Creamos una instancia de la función navigate
+  const navigate = useNavigate();
 
+  // Renderizamos el formulario de registro
   return (
     <div>
       <h1>Registro de usuarios</h1>
@@ -83,4 +93,5 @@ const Register = () => {
   );
 };
 
+// Exportamos el componente Register
 export default Register;

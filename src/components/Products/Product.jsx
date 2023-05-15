@@ -19,11 +19,12 @@ const Product = () => {
             <p>{product.description}</p>
             <p>${product.price}</p>
             <img src={product.imageUrl} alt={product.name} />
+            <button>Add Cart</button>
           </div>
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default Product;

@@ -1,8 +1,6 @@
+
 import React, { useContext, useEffect } from 'react';
-import NavBar from '../NavBar/NavBar';
 import { UserContext } from '../../context/UserContext/UserState';
-import { AntDesignOutlined } from '@ant-design/icons';
-import { Avatar } from 'antd';
 
 const Profile = () => {
   const { user, getUserInfo } = useContext(UserContext);
@@ -23,7 +21,7 @@ const Profile = () => {
       <h2>Perfil de Usuario</h2>
       <p>Nombre: {user.name}</p>
       <p>Email: {user.email}</p>
-      {/* Asegúrate de reemplazar estas propiedades con las que corresponden a tu objeto de usuario */}
+      {/* Igual hay que meter más, como los pedidos */}
     </div>
   );
 };
