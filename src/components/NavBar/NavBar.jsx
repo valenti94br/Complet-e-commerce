@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext/UserState';
-import { Avatar } from 'antd';
+import { Avatar, Button } from 'antd';
 import { AntDesignOutlined } from '@ant-design/icons';
 
 const NavBar = () => {
   const { user, logout } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const logoutUser = () => {
+  const logoutUser = (event) => {
+    event.preventDefault();
     logout();
     setTimeout(() => {
       navigate("/")
@@ -17,26 +18,25 @@ const NavBar = () => {
 
   return (
     <nav>
-      <ul>
-        <li>
+        <Button type="link">
           <Link to="/">Home</Link>
-        </li>
-        <li>
+        </Button>
+        <Button type="link">
           <Link to="/product">Market</Link>
-        </li>
+        </Button>
         {!user && (
           <>
-            <li>
+            <Button type="link">
               <Link to="/register">Register</Link>
-            </li>
-            <li>
+            </Button>
+            <Button type="link">
               <Link to="/login">Login</Link>
-            </li>
+            </Button>
           </>
         )}
         {user && (
           <>
-            <li>
+            <Button type="link">
               <Link to="/profile">
                 <Avatar
                   size={{
@@ -50,13 +50,12 @@ const NavBar = () => {
                   icon={<AntDesignOutlined />}
                 />
               </Link>
-            </li>
-            <li>
-              <span onClick={logoutUser}>Logout</span>
-            </li>
+            </Button>
+            <Button type="link">
+              <Link to="/" onClick={logoutUser}>Logout</Link>
+            </Button>
           </>
         )}
-      </ul>
     </nav>
   );
 };
