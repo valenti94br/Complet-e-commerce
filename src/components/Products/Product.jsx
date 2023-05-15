@@ -2,11 +2,15 @@ import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../context/GlobalState";
 
 const Product = () => {
-  const { products, getProducts } = useContext(GlobalContext);
+  const { products, getProducts, addToCart } = useContext(GlobalContext);
 
   useEffect(() => {
     getProducts();
   }, []);
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+  };
 
   return (
     <div>
@@ -19,7 +23,7 @@ const Product = () => {
             <p>{product.description}</p>
             <p>${product.price}</p>
             <img src={product.imageUrl} alt={product.name} />
-            <button>Add Cart</button>
+            <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
           </div>
         ))}
       </div>

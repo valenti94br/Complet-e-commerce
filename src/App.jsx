@@ -14,7 +14,8 @@ import Cart from './components/Cart/Cart'; // Importamos el componente Cart
 // Importamos los proveedores de contexto.
 import { GlobalProvider } from "./context/GlobalState";
 import { UserProvider } from "./context/UserContext/UserState";
-import { OrdersProvider } from "./context/OrdersContext/OrdersState"; // Corregimos el nombre del archivo
+import { OrdersProvider } from "./context/OrdersContext/OrdersState";
+import { ProductsProvider } from "./context/ProductsContext/ProductsState";
 
 // Definimos la función principal de la aplicación.
 function App() {
@@ -22,19 +23,21 @@ function App() {
     <div className="App">
       <UserProvider>
         <GlobalProvider>
-          <OrdersProvider> {/* Agregamos el OrdersProvider */}
-            <Router>
-              <NavBar />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/product" element={<Product />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/profile" element={<Profile />} />
-              </Routes>
-            </Router>
-          </OrdersProvider>
+          <ProductsProvider>
+            <OrdersProvider>
+              <Router>
+                <NavBar />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/product" element={<Product />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/profile" element={<Profile />} />
+                </Routes>
+              </Router>
+            </OrdersProvider>
+          </ProductsProvider>
         </GlobalProvider>
       </UserProvider>
     </div>
