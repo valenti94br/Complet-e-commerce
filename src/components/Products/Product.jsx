@@ -1,16 +1,16 @@
 import React, { useContext, useEffect } from "react";
-import { GlobalContext } from "../../context/GlobalState";
+import { ProductsContext } from "../../context/ProductsContext/ProductsState";
 
 const Product = () => {
-  const { products, getProducts, addToCart } = useContext(GlobalContext);
+  const { products, getProducts, addToCart, cart } = useContext(ProductsContext);
 
   useEffect(() => {
     getProducts();
   }, []);
 
-  const handleAddToCart = (product) => {
-    addToCart(product);
-  };
+  useEffect(()=> {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <div>
@@ -23,7 +23,7 @@ const Product = () => {
             <p>{product.description}</p>
             <p>${product.price}</p>
             <img src={product.imageUrl} alt={product.name} />
-            <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+            <button onClick={() => addToCart(product)}>Add to Cart</button>
           </div>
         ))}
       </div>

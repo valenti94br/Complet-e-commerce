@@ -1,46 +1,28 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import axios from "axios";
+import ProductsReduce from "./ProductsReduce";
 
 const API_URL = "http://localhost:8080";
 
-export const ProductsContext = createContext();
+const cart =JSON.parse(localStorage.getItem("cart"));
 
 const initialState = {
   products: [],
-  cart: [],
+  product: {},
+  cart: cart ? cart : [],
 };
 
-const productsReducer = (state, action) => {
-  switch (action.type) {
-    case "GET_PRODUCTS":
-      return {
-        ...state,
-        products: action.payload,
-      };
-    case "ADD_TO_CART":
-      return {
-        ...state,
-        cart: [...state.cart, action.payload],
-      };
-    case "CLEAR_CART":
-      return {
-        ...state,
-        cart: [],
-      };
-    default:
-      return state;
-  }
-};
+export const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(productsReducer, initialState);
+  const [state, dispatch] = useReducer(ProductsReduce, initialState);
 
   const getProducts = async () => {
     try {
-      const response = await axios.get(API_URL + "/products");
+      const response = await axios.get(API_URL + "/products/getAllProducts");
       dispatch({
         type: "GET_PRODUCTS",
-        payload: response.data,
+        payload: response.data.getAllProducts
       });
     } catch (error) {
       console.error(error);
@@ -68,6 +50,7 @@ export const ProductsProvider = ({ children }) => {
     <ProductsContext.Provider
       value={{
         products: state.products,
+        product: state.product,
         cart: state.cart,
         getProducts,
         addToCart,

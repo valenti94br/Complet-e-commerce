@@ -12,7 +12,6 @@ import NavBar from './components/NavBar/NavBar';
 import Cart from './components/Cart/Cart'; // Importamos el componente Cart
 
 // Importamos los proveedores de contexto.
-import { GlobalProvider } from "./context/GlobalState";
 import { UserProvider } from "./context/UserContext/UserState";
 import { OrdersProvider } from "./context/OrdersContext/OrdersState";
 import { ProductsProvider } from "./context/ProductsContext/ProductsState";
@@ -22,7 +21,6 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-        <GlobalProvider>
           <ProductsProvider>
             <OrdersProvider>
               <Router>
@@ -38,7 +36,6 @@ function App() {
               </Router>
             </OrdersProvider>
           </ProductsProvider>
-        </GlobalProvider>
       </UserProvider>
     </div>
   );
