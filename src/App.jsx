@@ -9,7 +9,8 @@ import Home from './components/Home/Home';
 import Product from './components/Products/Product';
 import Profile from './components/Profile/Profile';
 import NavBar from './components/NavBar/NavBar';
-import Cart from './components/Cart/Cart'; // Importamos el componente Cart
+import Cart from './components/Cart/Cart';
+import Footer from './components/Footer/Footer';
 
 // Importamos los proveedores de contexto.
 import { UserProvider } from "./context/UserContext/UserState";
@@ -21,21 +22,22 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-          <ProductsProvider>
-            <OrdersProvider>
-              <Router>
-                <NavBar />
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/product" element={<Product />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/profile" element={<Profile />} />
-                </Routes>
-              </Router>
-            </OrdersProvider>
-          </ProductsProvider>
+        <ProductsProvider>
+          <OrdersProvider>
+            <Router>
+              <NavBar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/product" element={<Product />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/profile" element={<Profile />} />
+              </Routes>
+              <Footer />
+            </Router>
+          </OrdersProvider>
+        </ProductsProvider>
       </UserProvider>
     </div>
   );
