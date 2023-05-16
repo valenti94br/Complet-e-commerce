@@ -1,4 +1,3 @@
-
 const users = (state, action) => {
   // El reducer utiliza una declaración switch para manejar las diferentes acciones que pueden ocurrir.
   switch (action.type) {
