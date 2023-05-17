@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
 
@@ -26,7 +25,16 @@ const Profile = () => {
         <ul>
           {user.Orders.map((order) => (
             <li key={order.id}>
-              ID: {order.id}, Fecha: {order.createdAt}
+              <h4>Orden ID: {order.id}</h4>
+              <p>Fecha: {order.createdAt}</p>
+              <p>Productos:</p>
+              <ul>
+                {order.Products.map((product) => (
+                  <li key={product.id}>
+                    Nombre: {product.name}, Precio: {product.price}
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>
