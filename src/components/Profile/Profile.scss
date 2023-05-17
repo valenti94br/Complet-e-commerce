@@ -1,0 +1,24 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .profile-card {
+    width: 400px;
+  }
+  
+  .profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .profile-email {
+    color: #666666;
+    text-align: center;
+  }
+  
+  /* Otros estilos adicionales que desees agregar */
+  

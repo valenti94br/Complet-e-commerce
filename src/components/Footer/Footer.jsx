@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="container">
-        <p>© {new Date().getFullYear()} Mi Proyecto. Todos los derechos reservados.</p>
+        <p>Mi Proyecto 100% serio, real no fake {new Date().getFullYear()}©. </p>
         <div className="icons">
         <TwitterCircleFilled /> <GithubFilled /> <GoogleCircleFilled />
         </div>

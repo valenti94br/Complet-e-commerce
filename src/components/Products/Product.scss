@@ -1,0 +1,29 @@
+.product-card {
+  .ant-card-body {
+    text-align: center;
+  }
+
+  .product-price {
+    margin-top: 10px;
+    background-color: black;
+    padding: 10px;
+  }
+
+  .price-label {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .price-value {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .highlight {
+    background-color: black;
+    padding: 5px;
+    border-radius: 5px;
+  }
+}

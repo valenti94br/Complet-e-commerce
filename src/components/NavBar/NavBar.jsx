@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext/UserState';
-import { Avatar, Button, Menu } from 'antd';
+import { Button, Menu } from 'antd';
 import { AppstoreOutlined, HomeOutlined, ShoppingCartOutlined, LogoutOutlined, EditOutlined, SettingOutlined, LoginOutlined, ShoppingOutlined, UserOutlined } from '@ant-design/icons';
 
 const NavBar = () => {
@@ -72,19 +72,7 @@ const NavBar = () => {
           <>
             <Menu.Item key="profile" icon={<UserOutlined />}>
               <Button type="link">
-                <Link to="/profile">
-                  <Avatar
-                    size={{
-                      xs: 24,
-                      sm: 32,
-                      md: 40,
-                      lg: 64,
-                      xl: 80,
-                      xxl: 100,
-                    }}
-                    icon={<UserOutlined />}
-                  />
-                </Link>
+                <Link to="/profile">Profile</Link>
               </Button>
             </Menu.Item>
             <Menu.Item key="logout" icon={<LogoutOutlined />}>
