@@ -1,66 +1,64 @@
 
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
-import { useNavigate } from 'react-router-dom'; // Importamos useNavigate
+import { useNavigate } from 'react-router-dom';
+import { Form, Input, Button, Card } from 'antd';
+import './Login.scss';
 
-// Definimos el componente Login
-function Login() {
-  // Utilizamos el hook useContext para tener acceso al UserContext
+const Login = () => {
   const { login } = useContext(UserContext);
-
-  // Creamos estados locales para el email y la contraseña con los hooks useState
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  // Creamos una instancia de navigate
   const navigate = useNavigate();
 
-  // Esta función se activa cada vez que el valor del campo de email cambia
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
 
-  // Esta función se activa cada vez que el valor del campo de contraseña cambia
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 
-  // Esta función se activa cuando se envía el formulario
-  const handleSubmit = async (event) => {
-    // Previene la recarga de la página al enviar el formulario
-    event.preventDefault();
+  const handleSubmit = async (values) => {
     try {
-      // Llama a la función login del UserContext pasando el email y la contraseña
-      await login({ email, password });
-      // Aquí manejaríamos el inicio de sesión exitoso
-      navigate('/profile'); // Navegamos a la página de perfil después del inicio de sesión exitoso
+      await login({ email: values.email, password: values.password });
+      navigate('/profile');
     } catch (error) {
       console.error(error);
-      // Aquí manejaríamos los errores en el inicio de sesión
     }
   };
 
-  // Renderizamos el formulario de inicio de sesión
   return (
-    <div>
-      <h2>Iniciar sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input type="text" value={email} onChange={handleEmailChange} />
-        </label>
-        <br />
-        <label>
-          Contraseña:
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </label>
-        <br />
-        <button type="submit">Iniciar sesión</button>
-      </form>
+    <div className="login-container">
+      <Card className="login-card">
+        <h2 className="login-title">Iniciar sesión</h2>
+        <Form className="login-form" onFinish={handleSubmit}>
+          <Form.Item label="Email" name="email" rules={[{ required: true, message: '¡Por favor ingresa tu email!' }]}>
+            <Input type="text" value={email} onChange={handleEmailChange} />
+          </Form.Item>
+          <Form.Item
+            label="Contraseña"
+            name="password"
+            rules={[{ required: true, message: '¡Por favor ingresa tu contraseña!' }]}
+          >
+            <Input.Password value={password} onChange={handlePasswordChange} />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit" className="login-form-button">
+              Iniciar sesión
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
     </div>
   );
-}
+};
 
-// Exportamos el componente Login
 export default Login;
+
+
+
+
+
+
 

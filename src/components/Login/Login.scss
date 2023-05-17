@@ -1,0 +1,21 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-card {
+    width: 300px;
+    background-color: white; /* Agrega esta línea para establecer el fondo blanco */
+  }
+  
+  .login-form {
+    margin-top: 20px;
+  }
+  
+  .login-form-button {
+    width: 100%;
+  }
+  
+  
