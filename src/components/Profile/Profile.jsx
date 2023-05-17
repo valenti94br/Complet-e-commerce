@@ -21,7 +21,18 @@ const Profile = () => {
       <h2>Perfil de Usuario</h2>
       <p>Nombre: {user.name}</p>
       <p>Email: {user.email}</p>
-      {/* Igual hay que meter más, como los pedidos */}
+      <h3>Pedidos:</h3>
+      {user.Orders.length > 0 ? (
+        <ul>
+          {user.Orders.map((order) => (
+            <li key={order.id}>
+              ID: {order.id}, Fecha: {order.createdAt}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No hay pedidos</p>
+      )}
     </div>
   );
 };
