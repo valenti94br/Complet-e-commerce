@@ -1,66 +1,100 @@
-
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext/UserState';
-import { Avatar, Button } from 'antd';
-import { AntDesignOutlined } from '@ant-design/icons';
+import { Avatar, Button, Menu } from 'antd';
+import { AppstoreOutlined, HomeOutlined, ShoppingCartOutlined, LogoutOutlined, EditOutlined, SettingOutlined, LoginOutlined, ShoppingOutlined, UserOutlined } from '@ant-design/icons';
 
 const NavBar = () => {
   const { user, logout } = useContext(UserContext);
   const navigate = useNavigate();
+  const [current, setCurrent] = useState('');
 
   const logoutUser = (event) => {
     event.preventDefault();
     logout();
     setTimeout(() => {
-      navigate("/")
-    },2000)
+      navigate('/');
+    }, 2000);
   };
 
+  const onClick = (e) => {
+    setCurrent(e.key);
+  };
+
+  const menuItems = [
+    {
+      label: 'Home',
+      key: 'home',
+      icon: <HomeOutlined />,
+      link: '/',
+    },
+    {
+      label: 'Market',
+      key: 'market',
+      icon: <ShoppingOutlined />,
+      link: '/product',
+    },
+    {
+      label: 'Cart',
+      key: 'cart',
+      icon: <ShoppingCartOutlined />,
+      link: '/cart',
+    },
+    {
+      label: 'Register',
+      key: 'register',
+      icon: <EditOutlined />,
+      link: '/register',
+      hideWhenLoggedIn: true, // Ocultar cuando el usuario está autenticado
+    },
+    {
+      label: 'Login',
+      key: 'login',
+      icon: <LoginOutlined />,
+      link: '/login',
+      hideWhenLoggedIn: true, // Ocultar cuando el usuario está autenticado
+    },
+  ];
+
   return (
-    <nav>
-        {/* Muestra los enlaces de navegación y el avatar del usuario si está logueado */}
-        <Button type="link">
-          <Link to="/">Home</Link>
-        </Button>
-        <Button type="link">
-          <Link to="/product">Market</Link>
-        </Button>
-        <Button type="link">
-          <Link to="/cart">Cart</Link>
-        </Button>
-        {!user && (
-          <>
-            <Button type="link">
-              <Link to="/register">Register</Link>
-            </Button>
-            <Button type="link">
-              <Link to="/login">Login</Link>
-            </Button>
-          </>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal">
+        {menuItems.map((item) =>
+          user && item.hideWhenLoggedIn ? null : (
+            <Menu.Item key={item.key} icon={item.icon}>
+              <Button type="link">
+                <Link to={item.link}>{item.label}</Link>
+              </Button>
+            </Menu.Item>
+          )
         )}
         {user && (
           <>
-            <Button type="link">
-              <Link to="/profile">
-                <Avatar
-                  size={{
-                    xs: 24,
-                    sm: 32,
-                    md: 40,
-                    lg: 64,
-                    xl: 80,
-                    xxl: 100,
-                  }}
-                  icon={<AntDesignOutlined />}
-                />
-              </Link>
-            </Button>
-            <Button type="link">
-              <Link to="/" onClick={logoutUser}>Logout</Link>
-            </Button>
+            <Menu.Item key="profile" icon={<UserOutlined />}>
+              <Button type="link">
+                <Link to="/profile">
+                  <Avatar
+                    size={{
+                      xs: 24,
+                      sm: 32,
+                      md: 40,
+                      lg: 64,
+                      xl: 80,
+                      xxl: 100,
+                    }}
+                    icon={<UserOutlined />}
+                  />
+                </Link>
+              </Button>
+            </Menu.Item>
+            <Menu.Item key="logout" icon={<LogoutOutlined />}>
+              <Button type="link" onClick={logoutUser}>
+                Logout
+              </Button>
+            </Menu.Item>
           </>
         )}
+      </Menu>
     </nav>
   );
 };

@@ -1,6 +1,7 @@
 // Importamos las dependencias necesarias.
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import "./App.scss";
 
 // Importamos los componentes de la aplicación.
 import Register from './components/Register/Register';
