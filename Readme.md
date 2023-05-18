@@ -35,7 +35,7 @@ El proyecto tiene como finalidad lograr los siguientes objetivos:
 
 El proyecto sigue la siguiente arquitectura de carpetas y archivos:
 
-![Diagrama de las carpetas](src/assets/image/Carpetas-1)
+![Diagrama de las carpetas](src/assets/image/Carpetas-1.png)
 
 * * *
 
