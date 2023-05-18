@@ -37,6 +37,10 @@ El proyecto sigue la siguiente arquitectura de carpetas y archivos:
 
 ![Diagrama de las carpetas](src/assets/image/Carpetas-1.png)
 
+Esta es la estructura de los componentes:
+
+![Diagrama de los componentes](src/assets/image/Carpetas-2.png)
+
 * * *
 
 **Construido con** 🛠️
