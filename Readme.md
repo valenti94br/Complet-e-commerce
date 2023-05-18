@@ -41,6 +41,10 @@ Esta es la estructura de los componentes:
 
 ![Diagrama de los componentes](src/assets/image/Carpetas-2.png)
 
+Esta es la estructura de las carpetas de context:
+
+![Diagrama de los componentes](src/assets/image/Carpetas-3.png)
+
 * * *
 
 **Construido con** 🛠️
