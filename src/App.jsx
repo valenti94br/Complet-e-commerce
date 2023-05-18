@@ -44,6 +44,5 @@ function App() {
   );
 }
 
-// Exportamos la aplicación.
 export default App;
 
