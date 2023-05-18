@@ -20,5 +20,21 @@
     text-align: center;
   }
   
-  /* Otros estilos adicionales que desees agregar */
+  .profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ajusta la altura según tus necesidades */
+    text-align: center; /* Centra el contenido horizontalmente */
+  }
+  
+  .loading-text {
+    position: absolute; /* Hace que el elemento sea posicionado de forma absoluta */
+    top: 50%; /* Alinea el elemento a la mitad de la página verticalmente */
+    left: 50%; /* Alinea el elemento a la mitad de la página horizontalmente */
+    transform: translate(-50%, -50%); /* Centra el elemento en el centro de la página */
+  }
+  
+  
+  
   

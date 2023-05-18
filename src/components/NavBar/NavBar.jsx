@@ -1,7 +1,8 @@
+
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext/UserState';
-import { Button, Menu } from 'antd';
+import { Button, Menu, message } from 'antd';
 import { AppstoreOutlined, HomeOutlined, ShoppingCartOutlined, LogoutOutlined, EditOutlined, SettingOutlined, LoginOutlined, ShoppingOutlined, UserOutlined } from '@ant-design/icons';
 
 const NavBar = () => {
@@ -14,6 +15,7 @@ const NavBar = () => {
     logout();
     setTimeout(() => {
       navigate('/');
+      message.success('Hasta luego cocodrilo');
     }, 2000);
   };
 
@@ -88,3 +90,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+

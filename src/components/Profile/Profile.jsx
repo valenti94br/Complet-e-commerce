@@ -14,11 +14,15 @@ const Profile = () => {
   }, []);
 
   if (!user) {
-    return <h2>Loading...</h2>;
+    return (
+      <div className="profile-container">
+        <h2 className="loading-text">Pensando pensamientos...</h2>
+      </div>
+    );
   }
 
   return (
-    <div className="profile-container"> {/* Agrega una clase específica para el contenedor del Profile */}
+    <div className="profile-container">
       <Card className="profile-card">
         <Meta title="Perfil de Usuario" className="profile-name" />
         <p className="profile-email">Email: {user.email}</p>
@@ -49,6 +53,10 @@ const Profile = () => {
 };
 
 export default Profile;
+
+
+
+
 
 
 

@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext/ProductsState";
 import { OrdersContext } from "../../context/OrdersContext/OrdersState";
-import { Button, Card, Empty } from "antd";
+import { Button, Card, Empty, message } from "antd";
 import "./Cart.scss";
 
 const { Meta } = Card;
@@ -18,6 +18,7 @@ const Cart = () => {
   const createNewOrder = () => {
     createOrder(cart);
     clearCart();
+    message.success("¡Gracias por alimentar al capitalismo con nosotros!");
   };
 
   const cartItems = cart.map((cartItem, i) => (
@@ -54,7 +55,6 @@ const Cart = () => {
 };
 
 export default Cart;
-
 
 
 
